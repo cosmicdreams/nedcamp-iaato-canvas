@@ -7,39 +7,51 @@
  */
 (function () {
   const cache = {};
+  // Feeds are untrusted: cap their size so a bad feed cannot freeze the page.
+  const MAX_BYTES = 5e6, MAX_WHALES = 20, MAX_FIXES = 2000;
+  /** Primitive-only string coercion for feed fields. */
+  const str = (v, d = '') => (typeof v === 'string' ? v : typeof v === 'number' || typeof v === 'boolean' ? String(v) : d);
 
   /** Accepts our synthetic JSON, a bare array of individuals, or flat Movebank-style rows. */
   function normalize(raw) {
-    let list = Array.isArray(raw) ? raw : (raw.individuals || raw.whales || []);
+    let list = Array.isArray(raw) ? raw : (raw?.individuals || raw?.whales || []);
+    if (!Array.isArray(list)) return [];
     // Flat rows (e.g. a Movebank CSV converted to JSON): group by individual.
     if (list.length && !list[0].fixes && (list[0].timestamp || list[0]['location-lat'])) {
-      const byId = {};
+      const byId = Object.create(null);
       list.forEach((r) => {
-        const id = r['individual-local-identifier'] || r.id || r['tag-local-identifier'];
+        const id = str(r['individual-local-identifier'] || r.id || r['tag-local-identifier']);
         (byId[id] = byId[id] || { id, name: id, species: r['individual-taxon-canonical-name'] || '', fixes: [] }).fixes.push({
-          t: r.timestamp, lat: +(r['location-lat'] ?? r.lat), lon: +(r['location-long'] ?? r.lon), lc: r['argos:lc'] || r.lc,
+          t: r.timestamp, lat: +(r['location-lat'] ?? r.lat), lon: +(r['location-long'] ?? r.lon), lc: r['argos:lc'] ?? r.lc,
         });
       });
       list = Object.values(byId);
     }
-    return list.map((w) => ({
-      id: String(w.id),
-      ptt: w.ptt,
-      name: w.name || String(w.id),
-      commonName: w.common_name || w.commonName || w.species || 'Whale',
-      species: w.species || '',
-      sex: w.sex || '',
-      fixes: (w.fixes || [])
-        .map((f) => ({ t: new Date(f.t), lat: +f.lat, lon: +f.lon, lc: f.lc ?? null }))
-        .filter((f) => Number.isFinite(f.lat) && Number.isFinite(f.lon) && !isNaN(f.t))
-        .sort((a, b) => a.t - b.t),
+    return list.slice(0, MAX_WHALES).map((w) => ({
+      id: str(w?.id),
+      ptt: str(w?.ptt),
+      name: str(w?.name) || str(w?.id),
+      commonName: str(w?.common_name) || str(w?.commonName) || str(w?.species) || 'Whale',
+      species: str(w?.species),
+      sex: str(w?.sex),
+      fixes: (Array.isArray(w?.fixes) ? w.fixes : [])
+        .map((f) => ({ t: new Date(f?.t), lat: +f?.lat, lon: +f?.lon, lc: str(f?.lc, null) }))
+        .filter((f) => Math.abs(f.lat) <= 90 && Math.abs(f.lon) <= 180 && !isNaN(f.t))
+        .sort((a, b) => a.t - b.t)
+        .slice(-MAX_FIXES),
     })).filter((w) => w.fixes.length);
   }
 
   function load(url) {
     cache[url] = cache[url] || fetch(url, { credentials: 'same-origin' })
-      .then((r) => { if (!r.ok) throw new Error(`Whale data ${r.status}`); return r.json(); })
-      .then((raw) => ({ meta: raw.meta || {}, whales: normalize(raw) }));
+      .then((r) => { if (!r.ok) throw new Error(`Whale data ${r.status}`); return r.text(); })
+      .then((text) => {
+        if (text.length > MAX_BYTES) throw new Error('Whale data too large');
+        const raw = JSON.parse(text);
+        const whales = normalize(raw);
+        if (!whales.length) throw new Error('No whale tracks in feed');
+        return { meta: raw?.meta || {}, whales };
+      });
     return cache[url];
   }
 

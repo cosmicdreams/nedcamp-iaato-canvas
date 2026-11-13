@@ -126,8 +126,10 @@
         }, 40);
       });
       find('.whale-sci__csv').addEventListener('click', () => {
+        // Quote text cells and neutralise spreadsheet formulas; numbers stay numeric.
+        const cell = (v) => { let s = String(v ?? ''); if (/^[=+\-@\t\r]/.test(s)) s = `'${s}`; return `"${s.replace(/"/g, '""')}"`; };
         const rows = [['individual_id', 'ptt', 'species', 'timestamp_utc', 'lat', 'lon', 'argos_lc']];
-        whales.forEach((w) => visibleFixes(w).forEach((f) => rows.push([w.id, w.ptt ?? '', w.species, f.t.toISOString(), f.lat, f.lon, f.lc ?? ''])));
+        whales.forEach((w) => visibleFixes(w).forEach((f) => rows.push([cell(w.id), cell(w.ptt), cell(w.species), f.t.toISOString(), f.lat, f.lon, cell(f.lc)])));
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([rows.map((r) => r.join(',')).join('\n')], { type: 'text/csv' }));
         a.download = 'whale-tracks.csv';

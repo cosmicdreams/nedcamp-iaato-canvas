@@ -154,7 +154,7 @@
       scrub.addEventListener('input', () => { setPlaying(false); clock = (scrub.value / 1000) * LOOP_MS; });
       setPlaying(playing);
       requestAnimationFrame(tick);
-    });
+    }).catch(() => { dayLabel.textContent = Drupal.t('The whales are hiding today. Try again later!'); });
   }
 
   Drupal.behaviors.iaatoWhaleKids = {

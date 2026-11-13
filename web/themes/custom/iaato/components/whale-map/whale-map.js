@@ -33,7 +33,7 @@
 
     W.load(root.dataset.src).then(({ meta, whales }) => {
       root.querySelector('.whale-map__note').textContent = meta.source || '';
-      const layers = {};
+      const layers = Object.create(null);
       const all = L.featureGroup().addTo(map);
 
       const select = (id) => {
