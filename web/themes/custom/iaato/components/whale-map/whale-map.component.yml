@@ -1,0 +1,29 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: 'Whale tracker: map'
+description: 'Interactive slippy map of tagged whales, styled after the Ambassadorship World Map.'
+group: IAATO
+status: experimental
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once
+    - iaato/whale-common
+    - iaato/leaflet
+props:
+  type: object
+  required: [data_url]
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples: ['Follow the whales of the Southern Ocean']
+    intro:
+      type: string
+      title: Intro
+      examples: ['Click a whale pin to see where it has travelled since it was tagged. Tracks update as new satellite positions arrive.']
+    data_url:
+      type: string
+      title: Tracking data URL
+      description: 'JSON feed of tag fixes. See js/whale-common.js normalize() for accepted shapes.'
+      format: uri-reference
+      examples: ['/themes/custom/iaato/data/whale-tracks.json']

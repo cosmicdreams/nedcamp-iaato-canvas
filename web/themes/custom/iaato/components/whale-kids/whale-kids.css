@@ -1,0 +1,39 @@
+.whale-kids { flex: 1 1 100%; font-family: "Fredoka", "Comic Sans MS", system-ui, sans-serif; background: linear-gradient(#fff6d6, #ffe8f0); border-radius: 2.5rem; padding: 2rem; text-align: center; color: #263159; }
+.whale-kids__heading { font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: 0; text-transform: none; color: #ff6f61; text-shadow: 3px 3px 0 #fff; margin-bottom: 1rem; }
+.whale-kids__stage { position: relative; max-width: 60rem; margin: 0 auto; }
+.whale-kids__map { width: 100%; height: auto; display: block; border-radius: 2.5rem; border: 8px solid #fff; box-shadow: 0 10px 0 #b9e3ff; }
+.whale-kids__land path { fill: #fff; stroke: #d8f1ff; stroke-width: 10; stroke-linejoin: round; }
+.whale-kids__land text { font-size: 34px; }
+.whale-kids__label { font: 700 22px "Fredoka", sans-serif; fill: #7aa7c7; letter-spacing: 2px; }
+.whale-kids__trails path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 0 14; opacity: .85; }
+.whale-kids__whale { cursor: pointer; transition: transform .1s linear; }
+.whale-kids__whale:focus { outline: none; }
+.whale-kids__whale:focus-visible .wk-body { stroke: #263159; stroke-width: 4; }
+.whale-kids__whale .wk-spout { opacity: 0; transform-origin: 0 -20px; }
+.whale-kids__whale.is-happy .wk-spout { animation: wk-spout 1.2s ease-out; }
+.whale-kids__whale .wk-name { font: 700 18px "Fredoka", sans-serif; fill: #263159; paint-order: stroke; stroke: #fff; stroke-width: 5px; }
+@keyframes wk-spout { 0% { opacity: 0; transform: scale(.2); } 30% { opacity: 1; transform: scale(1.1); } 100% { opacity: 0; transform: scale(1.3) translateY(-10px); } }
+.whale-kids__bubble { position: absolute; left: 50%; bottom: 1.5rem; transform: translateX(-50%); width: min(90%, 34rem); background: #fff; border-radius: 1.75rem; padding: 1.25rem 1.5rem; font-size: 1.35rem; line-height: 1.35; box-shadow: 0 6px 0 rgb(38 49 89 / .15); border: 4px solid var(--c, #ff6f61); text-align: left; }
+.whale-kids__bubble strong { color: var(--c, #ff6f61); font-size: 1.6rem; }
+.whale-kids__bubble button { float: right; font: inherit; font-size: 1.5rem; border: 0; background: none; cursor: pointer; margin: -.5rem -.5rem 0 0; }
+.whale-kids__controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin: 1.5rem 0 1rem; flex-wrap: wrap; }
+.whale-kids__play { font: 600 1.5rem "Fredoka", sans-serif; padding: .75rem 2rem; border-radius: 999px; border: 0; background: #ffd23f; color: #263159; box-shadow: 0 6px 0 #e0a800; cursor: pointer; }
+.whale-kids__play:active { transform: translateY(4px); box-shadow: 0 2px 0 #e0a800; }
+.whale-kids__day { font-size: 1.5rem; font-weight: 600; margin: 0; }
+.whale-kids__friends { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.whale-kids__friends button { font: 600 1.35rem "Fredoka", sans-serif; display: flex; align-items: center; gap: .5rem; padding: .6rem 1.4rem .6rem .8rem; border-radius: 999px; border: 4px solid var(--c); background: #fff; color: #263159; cursor: pointer; box-shadow: 0 5px 0 var(--c); }
+.whale-kids__friends button:hover, .whale-kids__friends button[aria-pressed="true"] { background: var(--c); color: #fff; }
+.whale-kids__friends button:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--c); }
+.whale-kids__friends .wk-face { font-size: 2rem; line-height: 1; }
+
+/* Circumpolar view: square map, rings, labels. */
+.whale-kids--circumpolar .whale-kids__stage { max-width: 46rem; }
+.whale-kids--circumpolar .whale-kids__map { border-radius: 50%; }
+.whale-kids__rings circle { fill: none; stroke: #fff; stroke-opacity: .55; stroke-width: 3; stroke-dasharray: 2 12; stroke-linecap: round; }
+.whale-kids__rings text { font: 600 20px "Fredoka", sans-serif; fill: #fff; fill-opacity: .9; }
+.whale-kids__rings .wk-ocean { font-size: 30px; letter-spacing: 6px; fill-opacity: .55; }
+.whale-kids__timeline { flex: 1 1 18rem; max-width: 28rem; }
+.whale-kids__scrub { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; border-radius: 999px; background: linear-gradient(90deg, #7fd3ff, #2a8fd8); box-shadow: inset 0 3px 0 rgb(0 0 0 / .12); cursor: pointer; }
+.whale-kids__scrub::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 44px; border-radius: 50%; background: #ffd23f url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ctext x='6' y='29' font-size='24'%3E%F0%9F%90%B3%3C/text%3E%3C/svg%3E") center/80% no-repeat; border: 4px solid #fff; box-shadow: 0 4px 0 #e0a800; }
+.whale-kids__scrub::-moz-range-thumb { width: 40px; height: 40px; border-radius: 50%; background: #ffd23f; border: 4px solid #fff; }
+.whale-kids__scrub:focus-visible { outline: 4px solid #263159; outline-offset: 4px; }

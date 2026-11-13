@@ -1,0 +1,14 @@
+name: IAATO
+type: theme
+description: 'Glacier-inspired theme for the International Association of Antarctica Tour Operators. Canvas-ready SDCs.'
+core_version_requirement: ^11
+base theme: false
+logo: images/logo.svg
+libraries:
+  - iaato/global
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  highlighted: Highlighted
+  content: Content
+  footer: Footer

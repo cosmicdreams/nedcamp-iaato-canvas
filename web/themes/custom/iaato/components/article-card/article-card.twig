@@ -1,0 +1,12 @@
+<article{{ attributes.addClass('iaato-card') }}>
+  {% if image.src %}
+    <img class="iaato-card__image" src="{{ image.src }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}" loading="lazy">
+  {% endif %}
+  <h3 class="iaato-card__title"><a href="{{ href }}">{{ title }}</a></h3>
+  {% if category or featured %}
+    <ul class="iaato-card__tags">
+      {% if category %}<li>{{ category }}</li>{% endif %}
+      {% if featured %}<li>{{ 'Featured'|t }}</li>{% endif %}
+    </ul>
+  {% endif %}
+</article>

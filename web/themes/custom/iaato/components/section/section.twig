@@ -1,0 +1,7 @@
+<section{{ attributes.addClass('iaato-section', 'iaato-section--' ~ (background|default('white')), 'iaato-section--' ~ (align|default('center'))) }}>
+  <div class="iaato-container">
+    {% if heading %}<h2 class="iaato-section__heading">{{ heading }}</h2>{% endif %}
+    {% if intro %}<p class="iaato-section__intro">{{ intro }}</p>{% endif %}
+    <div class="iaato-section__content">{% block content %}{% endblock %}</div>
+  </div>
+</section>

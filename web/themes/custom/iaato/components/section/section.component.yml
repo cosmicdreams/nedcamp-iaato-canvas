@@ -1,0 +1,38 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Section
+description: Full-width band with optional tracked heading, intro text and a content slot.
+group: IAATO
+status: stable
+props:
+  type: object
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples: ['Latest articles']
+    intro:
+      type: string
+      title: Intro
+      examples: ['IAATO is a member organisation founded in 1991 to advocate and promote the practice of safe and environmentally responsible private-sector travel to the Antarctic.']
+    background:
+      type: string
+      title: Background
+      enum: [white, ice, navy]
+      meta:enum:
+        white: White
+        ice: 'Pale ice'
+        navy: Navy
+      default: white
+      examples: [white]
+    align:
+      type: string
+      title: Alignment
+      enum: [start, center]
+      meta:enum:
+        start: Left
+        center: Centered
+      default: center
+      examples: [center]
+slots:
+  content:
+    title: Content

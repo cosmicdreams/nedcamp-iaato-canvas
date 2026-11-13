@@ -1,0 +1,23 @@
+<div{{ attributes.addClass('whale-map') }} data-src="{{ data_url }}">
+  {% if heading %}<h3 class="whale-map__heading">{{ heading }}</h3>{% endif %}
+  {% if intro %}<p class="whale-map__intro">{{ intro }}</p>{% endif %}
+  <div class="whale-map__frame">
+    <div class="whale-map__bar">
+      <span class="whale-map__bar-title">{{ 'Whale tracker'|t }}</span>
+      <button type="button" class="whale-map__fullscreen" aria-label="{{ 'Toggle fullscreen mode'|t }}">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+    </div>
+    <div class="whale-map__canvas" role="application" aria-label="{{ 'Map of whale tracks'|t }}"></div>
+    <section class="whale-map__sheet" aria-label="{{ 'List of whales'|t }}">
+      <button type="button" class="whale-map__handle" aria-expanded="true" aria-label="{{ 'Collapse whale list'|t }}"><span></span></button>
+      <div class="whale-map__badge" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" fill="#fff" stroke="#0f6fc6" stroke-width="7"/><circle cx="60" cy="60" r="40" fill="#0f6fc6"/><path d="M28 66c0-10 11-18 26-18 10 0 18 4 22 10l10-8v22l-10-6c-4 8-12 12-22 12-15 0-26-4-26-12z" fill="#fff"/><circle cx="42" cy="62" r="3" fill="#1b2642"/><path d="M50 44c-2-6 2-10 0-14M54 44c2-5 6-7 8-11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+      </div>
+      <h4 class="whale-map__sheet-title">{{ 'Our Tagged Whales'|t }}</h4>
+      <p class="whale-map__sheet-text">{{ 'Satellite tags show us how whales use the waters around the Antarctic Peninsula, Scotia Sea and Ross Sea.'|t }}</p>
+      <ul class="whale-map__list"></ul>
+    </section>
+  </div>
+  <p class="whale-map__note"></p>
+</div>

@@ -1,0 +1,25 @@
+/* IAATO design tokens, sampled from iaato.org. */
+:root {
+  --iaato-navy: #1b2642;
+  --iaato-navy-90: rgb(27 38 66 / 0.9);
+  --iaato-ink: #212529;
+  --iaato-ice: #eaf1f8;
+  --iaato-snow: #f8f9fa;
+  --iaato-white: #fff;
+  --iaato-glacier: #0f6fc6;
+  --iaato-line: #dbdbdb;
+
+  --iaato-font: "Rubik", Arial, Helvetica, sans-serif;
+  --iaato-fs-body: 1.25rem;        /* 20px */
+  --iaato-fs-small: 1rem;
+  --iaato-fs-h2: 2rem;              /* 32px, uppercase, tracked */
+  --iaato-fs-display: clamp(3rem, 7vw, 6rem); /* 96px, weight 300 */
+  --iaato-tracking-wide: 0.3em;
+
+  --iaato-space-1: 0.5rem;
+  --iaato-space-2: 1rem;
+  --iaato-space-3: 2rem;
+  --iaato-space-4: 4rem;
+  --iaato-space-5: 7.5rem;
+  --iaato-container: 71.25rem;      /* 1140px */
+}

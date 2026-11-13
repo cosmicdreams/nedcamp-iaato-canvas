@@ -1,0 +1,27 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Button
+description: Uppercase outlined call-to-action link with an arrow, as used across iaato.org.
+group: IAATO
+status: stable
+props:
+  type: object
+  required: [text, href]
+  properties:
+    text:
+      type: string
+      title: Text
+      examples: ['Find out more']
+    href:
+      type: string
+      title: Link
+      format: uri-reference
+      examples: ['/about-us']
+    variant:
+      type: string
+      title: Variant
+      enum: [dark, light]
+      meta:enum:
+        dark: 'Navy on light background'
+        light: 'White on dark background'
+      default: dark
+      examples: [dark]

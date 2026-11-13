@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * IAATO page: transparent header over full-bleed content, navy footer.
+ */
+#}
+<header class="site-header" role="banner">
+  <a class="site-header__logo" href="{{ path('<front>') }}" rel="home">
+    <img src="{{ base_path ~ directory }}/images/logo.svg" alt="{{ site_name|default('IAATO') }} home" width="190" height="50">
+  </a>
+  {% if page.primary_menu %}
+    <nav class="site-header__nav" aria-label="{{ 'Main'|t }}">{{ page.primary_menu }}</nav>
+  {% endif %}
+  {{ page.header }}
+</header>
+
+<main id="main-content" class="site-main" role="main">
+  {% if not is_front %}<div class="iaato-page-spacer" aria-hidden="true"></div>{% endif %}
+  {% if page.highlighted %}
+    <div class="site-messages iaato-container">{{ page.highlighted }}</div>
+  {% endif %}
+  {{ page.content }}
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="iaato-container site-footer__inner">
+    <img class="site-footer__crest" src="{{ base_path ~ directory }}/images/crest.png" alt="IAATO crest" width="200" height="200">
+    <div>
+      <ul class="site-footer__links">
+        <li><a href="/contact-us">Contact Us</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+      </ul>
+      {{ page.footer }}
+      <p class="site-footer__legal">© International Association of Antarctica Tour Operators {{ 'now'|date('Y') }} – All rights reserved</p>
+    </div>
+  </div>
+</footer>

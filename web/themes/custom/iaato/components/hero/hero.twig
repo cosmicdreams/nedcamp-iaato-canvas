@@ -1,0 +1,13 @@
+<section{{ attributes.addClass('iaato-hero') }}>
+  {% if image.src %}
+    <img class="iaato-hero__image" src="{{ image.src }}" alt="{{ image.alt }}" width="{{ image.width }}" height="{{ image.height }}" loading="eager" fetchpriority="high">
+  {% endif %}
+  <div class="iaato-hero__body">
+    <h1 class="iaato-hero__heading">
+      {% if eyebrow %}<span class="iaato-hero__eyebrow">{{ eyebrow }}</span>{% endif %}
+      {{ heading }}
+    </h1>
+    <div class="iaato-hero__rule" aria-hidden="true"></div>
+    {% if tagline %}<p class="iaato-hero__tagline">{{ tagline }}</p>{% endif %}
+  </div>
+</section>
