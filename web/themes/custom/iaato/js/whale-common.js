@@ -42,11 +42,27 @@
     })).filter((w) => w.fixes.length);
   }
 
+  /** Reads a response body, cancelling the download once it passes MAX_BYTES. */
+  async function readCapped(r) {
+    const reader = r.body.getReader();
+    const chunks = [];
+    let bytes = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) return new Blob(chunks).text();
+      bytes += value.byteLength;
+      if (bytes > MAX_BYTES) {
+        await reader.cancel();
+        throw new Error('Whale data too large');
+      }
+      chunks.push(value);
+    }
+  }
+
   function load(url) {
     cache[url] = cache[url] || fetch(url, { credentials: 'same-origin' })
-      .then((r) => { if (!r.ok) throw new Error(`Whale data ${r.status}`); return r.text(); })
+      .then((r) => { if (!r.ok) throw new Error(`Whale data ${r.status}`); return readCapped(r); })
       .then((text) => {
-        if (text.length > MAX_BYTES) throw new Error('Whale data too large');
         const raw = JSON.parse(text);
         const whales = normalize(raw);
         if (!whales.length) throw new Error('No whale tracks in feed');

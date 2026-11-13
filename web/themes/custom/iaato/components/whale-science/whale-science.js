@@ -95,7 +95,7 @@
           const hrs = f.length > 1 ? (f[f.length - 1].t - f[0].t) / 36e5 : 0;
           const tr = document.createElement('tr');
           tr.classList.toggle('is-off', state.hidden.has(w.id));
-          tr.innerHTML = `<td><input type="checkbox" ${state.hidden.has(w.id) ? '' : 'checked'} style="--c:${colour(i)}" aria-label="Show ${esc(w.id)}"></td><td>${esc(w.id)}<br><small>PTT ${esc(w.ptt ?? '–')} · ${esc(w.sex || '?')}</small></td><td><em>${esc(w.species)}</em><small>${esc(w.commonName)}</small></td><td class="n">${f.length}</td><td class="n">${(hrs / 24).toFixed(1)}</td><td class="n">${km.toFixed(0)}</td><td class="n">${hrs ? (km / hrs).toFixed(2) : '–'}</td>`;
+          tr.innerHTML = `<td><input type="checkbox" ${state.hidden.has(w.id) ? '' : 'checked'} style="--c:${colour(i)}" aria-label="Show ${esc(w.id)}"></td><td>${esc(w.id)}<br><small>PTT ${esc(w.ptt || '–')} · ${esc(w.sex || '?')}</small></td><td><em>${esc(w.species)}</em><small>${esc(w.commonName)}</small></td><td class="n">${f.length}</td><td class="n">${(hrs / 24).toFixed(1)}</td><td class="n">${km.toFixed(0)}</td><td class="n">${hrs ? (km / hrs).toFixed(2) : '–'}</td>`;
           tr.querySelector('input').addEventListener('change', (e) => { e.target.checked ? state.hidden.delete(w.id) : state.hidden.add(w.id); render(); });
           tbody.append(tr);
         });
