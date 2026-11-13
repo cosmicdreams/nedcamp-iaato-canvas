@@ -1,0 +1,38 @@
+/* Header floats over the first hero, like iaato.org. */
+.site-header {
+  position: absolute; inset: 0 0 auto; z-index: 10;
+  display: flex; align-items: center; gap: var(--iaato-space-3);
+  padding: 1.5rem 1.875rem; color: var(--iaato-white);
+  background: linear-gradient(to bottom, rgb(27 38 66 / 0.55), transparent);
+}
+.site-header__logo { color: inherit; display: block; width: 190px; flex: none; }
+.site-header__logo img, .site-header__logo svg { width: 100%; filter: brightness(0) invert(1); }
+.site-header__nav { margin-left: auto; }
+.site-header__nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem clamp(1rem, 2vw, 1.875rem); }
+.site-header__nav a { font-size: 0.9rem; text-decoration: none; color: var(--iaato-white); }
+.site-header__nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.site-header__nav .menu .menu { display: none; }
+.site-header__nav h2 { display: none; }
+
+/* Pages without a hero still need contrast under the absolute header. */
+.site-main { min-height: 50vh; }
+.site-main > .iaato-page-spacer { height: 123px; background: var(--iaato-navy); }
+
+.site-footer { background: var(--iaato-navy); color: var(--iaato-snow); padding-block: var(--iaato-space-5) var(--iaato-space-4); }
+.site-footer__inner { display: grid; grid-template-columns: 250px 1fr; gap: var(--iaato-space-4); align-items: start; }
+.site-footer__crest { width: 200px; filter: brightness(0) invert(1); opacity: 0.95; }
+.site-footer__links { display: flex; justify-content: flex-end; gap: var(--iaato-space-3); list-style: none; margin: 0 0 var(--iaato-space-3); padding: 0; font-weight: 600; font-size: var(--iaato-fs-small); }
+.site-footer__links a { text-decoration: none; }
+.site-footer__legal { text-align: right; font-size: var(--iaato-fs-small); opacity: 0.8; }
+.site-footer a:hover { color: var(--iaato-ice); }
+
+@media (max-width: 60rem) {
+  .site-header { flex-wrap: wrap; }
+  .site-header__nav { margin-left: 0; width: 100%; }
+  .site-footer__inner { grid-template-columns: 1fr; }
+  .site-footer__links, .site-footer__legal { justify-content: flex-start; text-align: left; }
+}
+
+/* Drupal chrome. */
+.site-messages > * > :not(.hidden) { margin-block: var(--iaato-space-2); }
+.tabs-wrapper ul { display: flex; gap: 1rem; list-style: none; padding: 0; font-size: var(--iaato-fs-small); }

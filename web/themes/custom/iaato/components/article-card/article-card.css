@@ -1,0 +1,8 @@
+.iaato-card { position: relative; }
+.iaato-card__image { width: 100%; aspect-ratio: 1; object-fit: cover; margin-bottom: 1.25rem; }
+.iaato-card__title { font-size: 1.25rem; font-weight: 500; line-height: 1.4; margin-bottom: 1rem; }
+.iaato-card__title a { text-decoration: none; }
+.iaato-card__title a::after { content: ""; position: absolute; inset: 0; }
+.iaato-card:hover .iaato-card__title a { color: var(--iaato-glacier); }
+.iaato-card__tags { display: flex; gap: .5rem; list-style: none; margin: 0; padding: 0; }
+.iaato-card__tags li { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; border: 1px solid var(--iaato-line); padding: .15rem .6rem; }

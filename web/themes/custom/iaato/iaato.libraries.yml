@@ -1,0 +1,32 @@
+global:
+  css:
+    base:
+      https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..700;1,300..700&display=swap: { type: external }
+      css/tokens.css: {}
+      css/base.css: {}
+    layout:
+      css/layout.css: {}
+
+whale-common:
+  js:
+    js/whale-common.js: {}
+
+leaflet:
+  remote: https://leafletjs.com
+  version: 1.9.4
+  license: { name: BSD-2-Clause, url: https://github.com/Leaflet/Leaflet/blob/main/LICENSE, gpl-compatible: true }
+  css:
+    component:
+      https://unpkg.com/leaflet@1.9.4/dist/leaflet.css: { type: external, minified: true, attributes: { integrity: sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H, crossorigin: anonymous } }
+  js:
+    https://unpkg.com/leaflet@1.9.4/dist/leaflet.js: { type: external, minified: true, attributes: { integrity: sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH, crossorigin: anonymous } }
+
+font-fredoka:
+  css:
+    base:
+      https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap: { type: external }
+
+font-plex-mono:
+  css:
+    base:
+      https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap: { type: external }

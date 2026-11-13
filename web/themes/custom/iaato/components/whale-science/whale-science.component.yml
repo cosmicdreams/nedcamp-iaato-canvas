@@ -1,0 +1,25 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: 'Whale tracker: research'
+description: 'Polar stereographic track plot with time scrubber, Argos quality filter, per-individual statistics and CSV export.'
+group: IAATO
+status: experimental
+libraryOverrides:
+  dependencies:
+    - core/drupal
+    - core/once
+    - iaato/whale-common
+    - iaato/font-plex-mono
+props:
+  type: object
+  required: [data_url]
+  properties:
+    heading:
+      type: string
+      title: Heading
+      examples: ['Satellite telemetry: Southern Ocean cetaceans']
+    data_url:
+      type: string
+      title: Tracking data URL
+      description: 'JSON feed of tag fixes. See js/whale-common.js normalize() for accepted shapes.'
+      format: uri-reference
+      examples: ['/themes/custom/iaato/data/whale-tracks.json']

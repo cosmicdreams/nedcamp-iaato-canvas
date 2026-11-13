@@ -1,0 +1,27 @@
+<div{{ attributes.addClass('whale-kids', 'whale-kids--' ~ (view|default('peninsula'))) }} data-src="{{ data_url }}" data-view="{{ view|default('peninsula') }}">
+  {% if heading %}<h3 class="whale-kids__heading">{{ heading }} <span aria-hidden="true">🐋</span></h3>{% endif %}
+  <div class="whale-kids__stage">
+    <svg class="whale-kids__map" viewBox="0 0 1000 640" role="img" aria-label="{{ 'Cartoon map of Antarctica with whales swimming around it'|t }}">
+      <defs>
+        <radialGradient id="wk-sea" cx="50%" cy="50%" r="70%"><stop offset="0" stop-color="#7fd3ff"/><stop offset="1" stop-color="#2a8fd8"/></radialGradient>
+        <pattern id="wk-waves" width="80" height="40" patternUnits="userSpaceOnUse"><path d="M0 20q10-10 20 0t20 0 20 0 20 0" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/></pattern>
+        <filter id="wk-soft" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0b4f86" flood-opacity=".35"/></filter>
+      </defs>
+      <rect class="wk-sea" width="1000" height="640" rx="40" fill="url(#wk-sea)"/>
+      <rect class="wk-sea" width="1000" height="640" rx="40" fill="url(#wk-waves)"/>
+      <g class="whale-kids__rings"></g>
+      <g class="whale-kids__land"></g>
+      <g class="whale-kids__trails"></g>
+      <g class="whale-kids__whales"></g>
+    </svg>
+    <div class="whale-kids__bubble" hidden aria-live="polite"></div>
+  </div>
+  <div class="whale-kids__controls">
+    <button type="button" class="whale-kids__play" aria-pressed="true"><span aria-hidden="true">⏸️</span> <span class="whale-kids__play-label">{{ 'Pause'|t }}</span></button>
+    <label class="whale-kids__timeline"><span class="visually-hidden">{{ 'Whale trip day'|t }}</span>
+      <input type="range" min="0" max="1000" value="0" class="whale-kids__scrub">
+    </label>
+    <p class="whale-kids__day"><span aria-hidden="true">☀️</span> <span class="whale-kids__day-label"></span></p>
+  </div>
+  <ul class="whale-kids__friends" aria-label="{{ 'Meet the whales'|t }}"></ul>
+</div>

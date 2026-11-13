@@ -1,0 +1,7 @@
+.iaato-button { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 1.75rem; border: 1px solid currentColor; text-decoration: none; text-transform: uppercase; letter-spacing: 0.15em; font-size: var(--iaato-fs-small); transition: background-color .2s, color .2s; }
+.iaato-button svg { transition: transform .2s; }
+.iaato-button:hover svg { transform: translateX(4px); }
+.iaato-button--dark { color: var(--iaato-navy); }
+.iaato-button--dark:hover { background: var(--iaato-navy); color: var(--iaato-white); }
+.iaato-button--light { color: var(--iaato-white); }
+.iaato-button--light:hover { background: var(--iaato-white); color: var(--iaato-navy); }

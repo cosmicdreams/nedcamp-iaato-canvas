@@ -1,0 +1,35 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Article card
+description: Square image, linked headline and category tags, as in the Latest Articles carousel.
+group: IAATO
+status: stable
+props:
+  type: object
+  required: [title, href, image]
+  properties:
+    image:
+      title: Image
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      examples:
+        - src: card.jpg
+          alt: 'Expedition ship among icebergs'
+          width: 700
+          height: 700
+    title:
+      type: string
+      title: Title
+      examples: ['Antarctic Travel Season Begins with New Members Joining the Responsible Tourism Fold']
+    href:
+      type: string
+      title: Link
+      format: uri-reference
+      examples: ['/news-room']
+    category:
+      type: string
+      title: Category
+      examples: ['News']
+    featured:
+      type: boolean
+      title: Featured
+      examples: [true]

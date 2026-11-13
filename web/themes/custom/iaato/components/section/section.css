@@ -1,0 +1,11 @@
+.iaato-section { padding-block: var(--iaato-space-5); }
+.iaato-section--ice { background: var(--iaato-ice); }
+.iaato-section--navy { background: var(--iaato-navy); color: var(--iaato-snow); }
+.iaato-section--center { text-align: center; }
+.iaato-section--center .iaato-section__intro { max-width: 32rem; margin-inline: auto; }
+.iaato-section__heading { margin-bottom: var(--iaato-space-3); }
+.iaato-section__intro { font-size: 1.35rem; line-height: 1.6; margin-bottom: var(--iaato-space-3); }
+.iaato-section__content { display: flex; flex-wrap: wrap; gap: var(--iaato-space-3); justify-content: inherit; }
+.iaato-section--center .iaato-section__content { justify-content: center; }
+.iaato-section__content:empty { display: none; }
+.iaato-section__content > .iaato-card { flex: 1 1 18rem; max-width: 25rem; text-align: left; }

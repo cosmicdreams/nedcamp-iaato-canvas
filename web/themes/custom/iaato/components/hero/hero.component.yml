@@ -1,0 +1,31 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/HEAD/core/assets/schemas/v1/metadata.schema.json
+name: Hero
+description: Full-bleed glacier hero with tracked eyebrow, light display heading and a tagline card.
+group: IAATO
+status: stable
+props:
+  type: object
+  required: [heading, image]
+  properties:
+    eyebrow:
+      type: string
+      title: Eyebrow
+      examples: ['Stewards of']
+    heading:
+      type: string
+      title: Heading
+      examples: ['Antarctica']
+    tagline:
+      type: string
+      title: Tagline
+      description: Short italic statement shown in the white card at the bottom right.
+      examples: ['One of the most perfectly preserved regions on the planet']
+    image:
+      title: Background image
+      $ref: json-schema-definitions://canvas.module/image
+      type: object
+      examples:
+        - src: hero.jpg
+          alt: 'Glacier face meeting the Southern Ocean'
+          width: 1920
+          height: 700

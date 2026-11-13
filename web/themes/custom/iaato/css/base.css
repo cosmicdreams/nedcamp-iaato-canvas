@@ -1,0 +1,22 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--iaato-font);
+  font-size: var(--iaato-fs-body);
+  line-height: 1.5;
+  color: var(--iaato-ink);
+  background: var(--iaato-white);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+a:hover { color: var(--iaato-glacier); }
+h1, h2, h3, h4 { margin: 0 0 var(--iaato-space-2); font-weight: 400; line-height: 1.2; }
+h1 { font-size: var(--iaato-fs-display); font-weight: 300; }
+h2 { font-size: var(--iaato-fs-h2); text-transform: uppercase; letter-spacing: var(--iaato-tracking-wide); }
+h3 { font-size: 1.5rem; }
+p { margin: 0 0 var(--iaato-space-2); }
+:focus-visible { outline: 3px solid var(--iaato-glacier); outline-offset: 3px; }
+.visually-hidden { position: absolute !important; clip: rect(1px,1px,1px,1px); overflow: hidden; height: 1px; width: 1px; word-wrap: normal; }
+.skip-link:focus { position: fixed; top: 0; left: 0; z-index: 100; background: var(--iaato-white); padding: 1rem; clip: auto; width: auto; height: auto; }
+.iaato-container { width: min(100% - 2 * var(--iaato-space-3), var(--iaato-container)); margin-inline: auto; }

@@ -1,0 +1,38 @@
+<div{{ attributes.addClass('whale-sci') }} data-src="{{ data_url }}">
+  <header class="whale-sci__head">
+    {% if heading %}<h3 class="whale-sci__title">{{ heading }}</h3>{% endif %}
+    <p class="whale-sci__meta"></p>
+  </header>
+  <div class="whale-sci__grid">
+    <figure class="whale-sci__fig">
+      <svg class="whale-sci__plot" viewBox="-1 -1 2 2" role="img" aria-label="{{ 'Polar stereographic plot of tag fixes'|t }}">
+        <g class="whale-sci__graticule"></g>
+        <g class="whale-sci__coast"></g>
+        <g class="whale-sci__tracks"></g>
+        <g class="whale-sci__heads"></g>
+      </svg>
+      <figcaption class="whale-sci__caption">{{ 'South polar stereographic (central meridian 0°). Coastline simplified to ice-shelf fronts. Line = consecutive fixes, unsmoothed; marker = interpolated position at t.'|t }}</figcaption>
+    </figure>
+    <div class="whale-sci__side">
+      <fieldset class="whale-sci__controls">
+        <legend>{{ 'Controls'|t }}</legend>
+        <label class="whale-sci__time"><span>t = <output class="whale-sci__t"></output></span>
+          <input type="range" min="0" max="1000" value="1000" class="whale-sci__slider">
+        </label>
+        <div class="whale-sci__row">
+          <button type="button" class="whale-sci__btn whale-sci__playbtn">▶ {{ 'Play'|t }}</button>
+          <button type="button" class="whale-sci__btn whale-sci__extent" aria-pressed="false">{{ 'Circumpolar'|t }}</button>
+          <button type="button" class="whale-sci__btn whale-sci__csv">{{ 'Export CSV'|t }}</button>
+        </div>
+        <label class="whale-sci__check"><input type="checkbox" class="whale-sci__lcfilter"> {{ 'Exclude Argos LC A, B, 0'|t }}</label>
+      </fieldset>
+      <div class="whale-sci__tablewrap">
+        <table class="whale-sci__table">
+          <caption class="visually-hidden">{{ 'Per-individual track summary'|t }}</caption>
+          <thead><tr><th scope="col"><span class="visually-hidden">{{ 'Show'|t }}</span></th><th scope="col">ID</th><th scope="col">{{ 'Taxon'|t }}</th><th scope="col" class="n">n</th><th scope="col" class="n">{{ 'Days'|t }}</th><th scope="col" class="n">km</th><th scope="col" class="n">km·h⁻¹</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
