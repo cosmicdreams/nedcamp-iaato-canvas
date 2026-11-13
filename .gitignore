@@ -1,0 +1,17 @@
+# Composer-managed code.
+/vendor/
+/recipes/
+
+# The web root is rebuilt by Composer scaffolding and DDEV; track only custom code.
+/web/*
+!/web/modules/
+/web/modules/*
+!/web/modules/custom/
+!/web/themes/
+/web/themes/*
+!/web/themes/custom/
+
+# OS and editor noise.
+.DS_Store
+.idea/
+.vscode/
