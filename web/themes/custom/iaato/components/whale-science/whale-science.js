@@ -41,7 +41,7 @@
       const drawStatic = (ext) => {
         const s = ext[2];
         const grat = find('.whale-sci__graticule'); grat.replaceChildren();
-        for (let lat = -80; lat >= -45; lat += 5) {
+        for (let lat = -80; lat <= -45; lat += 5) {
           const r = Math.tan(Math.PI / 4 + (lat * Math.PI) / 360);
           el('circle', { r, 'stroke-dasharray': lat % 10 ? '2 3' : '' }, grat);
           if (lat % 10 === 0) { const t = el('text', { x: 0.004 * s, y: -r - 0.006 * s, 'font-size': 0.022 * s }, grat); t.textContent = `${-lat}°S`; }
@@ -62,7 +62,8 @@
       const lat2label = (ext) => (ext === circ ? -46.5 : -52);
 
       const colour = (i) => W.palette[i % W.palette.length];
-      const visibleFixes = (w) => w.fixes.filter((f) => f.t <= state.t && (!state.goodOnly || GOOD_LC.has(String(f.lc))));
+      const qualityFixes = (w) => w.fixes.filter((f) => !state.goodOnly || GOOD_LC.has(String(f.lc)));
+      const visibleFixes = (w) => qualityFixes(w).filter((f) => f.t <= state.t);
 
       const drawTracks = () => {
         const tracks = find('.whale-sci__tracks'), heads = find('.whale-sci__heads');
@@ -79,7 +80,7 @@
             const dot = el('circle', { cx: x, cy: y, r: GOOD_LC.has(String(p.lc)) ? r : r * 0.7, fill: c, 'fill-opacity': GOOD_LC.has(String(p.lc)) ? 0.9 : 0.35 }, tracks);
             el('title', {}, dot).textContent = `${w.id} ${iso(p.t)}\n${p.lat.toFixed(4)}, ${p.lon.toFixed(4)}  LC ${p.lc}`;
           });
-          const pos = W.positionAt(f, state.t) || f[f.length - 1];
+          const pos = W.positionAt(qualityFixes(w), state.t) || f[f.length - 1];
           const [hx, hy] = P(pos.lat, pos.lon);
           el('title', {}, el('circle', { cx: hx, cy: hy, r: r * 2.6, fill: c }, heads)).textContent = `${w.id} (${w.name}) @ t`;
         });

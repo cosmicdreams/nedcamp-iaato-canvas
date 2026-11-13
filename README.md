@@ -40,8 +40,11 @@ The whale components use no jQuery. Shared helpers are in `js/whale-common.js`.
 
 ## Tracking data
 
-The whale data is **synthetic**. `scripts/generate-whale-data.py` writes
-`web/themes/custom/iaato/data/whale-tracks.json`, shaped like satellite-tag exports.
+The whale data is **synthetic**, shaped like satellite-tag exports. Regenerate it with:
+
+```zsh
+python3 scripts/generate-whale-data.py web/themes/custom/iaato/data/whale-tracks.json
+```
 
 Each whale component has a **Tracking data URL** setting. To use real data, point it at another feed
 and, if the shape differs, change only `normalize()` in `js/whale-common.js`. It already accepts this
